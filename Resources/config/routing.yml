@@ -9,4 +9,3 @@ delete:
 delete_all:
     path:     /deleteAll
     defaults: { _controller: PageAnnotatorBundle:Annotation:deleteAll }
-    
