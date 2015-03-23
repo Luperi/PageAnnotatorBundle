@@ -2,7 +2,9 @@
 
 namespace Luperi\PageAnnotatorBundle\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Luperi\PageAnnotatorBundle\Entity\Annotation;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class AnnotationController extends Controller
 {

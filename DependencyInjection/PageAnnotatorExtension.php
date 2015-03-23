@@ -2,11 +2,6 @@
 
 namespace Luperi\PageAnnotatorBundle\DependencyInjection;
 
-use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\Config\FileLocator;
-use Symfony\Component\HttpKernel\DependencyInjection\Extension;
-use Symfony\Component\DependencyInjection\Loader;
-
 class PageAnnotatorExtension extends Extension
 {
     /**
@@ -19,7 +14,5 @@ class PageAnnotatorExtension extends Extension
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
-        $loader->load('parameters.yml');
-        $loader->load('config.yml');
     }
 }
