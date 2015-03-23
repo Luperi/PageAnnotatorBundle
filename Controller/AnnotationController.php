@@ -50,6 +50,8 @@ class AnnotationController extends Controller
         $em->persist($annotation);
         $em->flush();
 
+        echo "ciao";
+
         return new JsonResponse(array('id' => $annotation->getId()));
     }
 
