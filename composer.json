@@ -22,7 +22,6 @@
   "minimum-stability": "dev",
   "target-dir": "luperi/PageAnnotatorBundle",
   "autoload": {
-    "psr-0": { "luperi\\PageAnnotatorBundle": "" },
-    "classmap": [ "lib" ]
+    "psr-0": { "luperi\\PageAnnotatorBundle": "" }
   }
 }
