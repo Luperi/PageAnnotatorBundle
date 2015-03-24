@@ -9,6 +9,7 @@ Add PageAnnotatorBundle to your composer.json
 
 Register the bundle in app/AppKernel.php:
 
+<div>
 <?php
 // app/AppKernel.php
 
@@ -19,3 +20,4 @@ public function registerBundles()
         new luperi\PageAnnotatorBundle\PageAnnotatorBundle(),
     );
 }
+</div>
