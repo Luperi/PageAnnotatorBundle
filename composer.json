@@ -1,5 +1,5 @@
 {
-  "name": "luperi/page_annotator_bundle",
+  "name": "luperi/page-annotator-bundle",
   "description": "Bundle to annotate html pages, developed for annotatorjs",
   "type": "symfony-bundle",
   "keywords": ["html", "annotator", "annotate", "annotatorjs"],
