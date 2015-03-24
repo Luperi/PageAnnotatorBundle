@@ -1,9 +1,9 @@
 {
   "name": "luperi/page_annotator_bundle",
-  "description": "Bundle to annotate html pages",
+  "description": "Bundle to annotate html pages, developed for annotatorjs",
   "type": "symfony-bundle",
   "keywords": ["html", "annotator", "annotate", "annotatorjs"],
-  "homepage": "https://github.com/erivello/SimpleHtmlDomBundle",
+  "homepage": "https://github.com/luperi/PageAnnotatorBundle",
   "license": "MIT",
   "authors": [
     {
@@ -20,8 +20,8 @@
     "symfony/browser-kit": "2.*"
   },
   "minimum-stability": "dev",
-  "target-dir": "luperi/PageAnnotatorBundle",
+  "target-dir": "Luperi/PageAnnotatorBundle",
   "autoload": {
-    "psr-0": { "luperi\\PageAnnotatorBundle": "" }
+    "psr-0": { "Luperi\\PageAnnotatorBundle": "" }
   }
 }
