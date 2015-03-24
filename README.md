@@ -1,20 +1,21 @@
-	
-Installazione
-=============
+Installation is very easy, it makes use of Composer.
 
-Passo 1: scaricare il bundle
-----------------------------
+Add SimpleHtmlDomBundle to your composer.json
 
-Aprire il file '/composer.json' e aggiungere:
+"require": {
+    "erivello/simple-html-dom-bundle": "dev-master"
+}
 
-"require": 
-  {
-    "luperi/page_annotator_bundle": "dev-master"
-  }
+Register the bundle in app/AppKernel.php:
 
-Passo 2: abilitare il bundle
-----------------------------
+<?php
+// app/AppKernel.php
 
-Quindi, abilitare il bundle, aggiungendo la riga seguente nel file 'app/AppKernel.php' del progetto:
+public function registerBundles()
+{
+    $bundles = array(
+        // ...
 
-  new luperi\PageAnnotatorBundle\PageAnnotatorBundle(),
+        new Erivello\SimpleHtmlDomBundle\ErivelloSimpleHtmlDomBundle(),
+    );
+}
