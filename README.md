@@ -1,10 +1,10 @@
 Installazione
 =============
 
-Step 1: download bundle
+Step 1: download the bundle
 ----------------------------
 
-Add this snippet of code in 'composer.phar':
+Add this snippet of code in `composer.phar`:
 
 ```bash
 "require": {
@@ -17,10 +17,7 @@ Add this snippet of code in 'composer.phar':
 Step 2: enable the bundle
 ----------------------------
 
-Register the bundle in  
-```php
-    app/AppKernel.php 
-```
+Register the bundle in `app/AppKernel.php`:
 
 ```php
 <?php
