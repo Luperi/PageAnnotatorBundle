@@ -1,23 +1,26 @@
 Installazione
 =============
 
-Passo 1: scaricare il bundle
+Step 1: download bundle
 ----------------------------
 
-Aprire una console, entrare nella cartella del progetto ed eseguire il
-comando seguente per scaricare l'ultima versione stabile di questo bundle:
+Add this snippet of code in 'composer.phar':
 
 ```bash
 "require": {
+    // ...
+    
     "luperi/page_annotator_bundle": "dev-master"
 }
 ```
 
-Passo 2: abilitare il bundle
+Step 2: enable the bundle
 ----------------------------
 
-Quindi, abilitare il bundle, aggiungendo la riga seguente nel file `app/AppKernel.php`
-del progetto:
+Register the bundle in  
+```php
+    app/AppKernel.php 
+```
 
 ```php
 <?php
@@ -32,3 +35,4 @@ public function registerBundles()
     );
 }
 ```
+
