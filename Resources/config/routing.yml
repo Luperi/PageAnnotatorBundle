@@ -1,11 +1,11 @@
-page-annotator-save:
+page_annotator_save:
     path:     /save
     defaults: { _controller: PageAnnotatorBundle:Annotation:save }
 
-page-annotator-delete:
+page_annotator_delete:
     path:     /delete
     defaults: { _controller: PageAnnotatorBundle:Annotation:delete }
 
-page-annotator-delete_all:
+page_annotator_delete_all:
     path:     /deleteAll
     defaults: { _controller: PageAnnotatorBundle:Annotation:deleteAll }
