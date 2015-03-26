@@ -9,3 +9,7 @@ page_annotator_delete:
 page_annotator_delete_all:
     path:     /deleteAll/
     defaults: { _controller: PageAnnotatorBundle:Annotation:deleteAll }
+
+page_annotator_get_all:
+    path:     /getAll/
+    defaults: { _controller: PageAnnotatorBundle:Annotation:getAll }

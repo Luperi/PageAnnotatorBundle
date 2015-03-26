@@ -11,7 +11,7 @@ class AnnotationController extends Controller
 {
     /*
      * Cerca una Annotation con le caratteristiche di quella che deve essere salvata
-     * In caso non esista già ne viene istanziata una nuova e salvata nel DB
+     * In caso non esista già, ne viene istanziata una nuova e salvata nel DB
      * Ciò consente di usare questa funzione sia per l'update che per l'inserimento di una nuova Annotation
      * Inoltre evita che vengano salvate istanze duplicate anche in caso di Annotation creata sulla
      * stessa porzione di pagina
@@ -25,7 +25,7 @@ class AnnotationController extends Controller
             || $request->get('quote') == null
             || $request->get('url') == null
             || $request->get('text') == null)
-            return;
+            return new JsonResponse(array('success' => false));
         $a = [];
         $a['start'] = $request->get('start');
         $a['startOffset'] = $request->get('startOffset');
@@ -71,7 +71,7 @@ class AnnotationController extends Controller
             || $request->get('end') == null
             || $request->get('endOffset') == null
             || $request->get('url') == null)
-            return;
+            return new JsonResponse(array('success' => false));
         $a = [];
         $a['url'] = $request->get('url');
         $a['start'] = $request->get('start');
@@ -110,6 +110,13 @@ class AnnotationController extends Controller
         }
 
         return new JsonResponse(array('success' => true));
+    }
+
+    public function getAll()
+    {
+        return $this->getDoctrine()
+            ->getRepository('PageAnnotatorBundle:Annotation', 'annotation')
+            ->findAll();
     }
 
 }
