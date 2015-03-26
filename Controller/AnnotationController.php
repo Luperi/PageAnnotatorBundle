@@ -1,8 +1,11 @@
 <?php
 
+namespace Luperi\PageAnnotatorBundle\Controller;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Luperi\PageAnnotatorBundle\Entity\Annotation;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 
 class AnnotationController extends Controller
 {
@@ -15,6 +18,14 @@ class AnnotationController extends Controller
      */
     public function saveAction(Request $request)
     {
+        if ($request->get('start') == null
+            || $request->get('startOffset') == null
+            || $request->get('end') == null
+            || $request->get('endOffset') == null
+            || $request->get('quote') == null
+            || $request->get('url') == null
+            || $request->get('text') == null)
+            return;
         $a = [];
         $a['start'] = $request->get('start');
         $a['startOffset'] = $request->get('startOffset');
@@ -33,7 +44,7 @@ class AnnotationController extends Controller
         );
 
         $em = $this->get('doctrine.orm.annotation_entity_manager');
-        $annotation = $em->getRepository('LuperiPageAnnotatorBundle:Annotation', 'annotation')->findOneBy($search_array);
+        $annotation = $em->getRepository('PageAnnotatorBundle:Annotation', 'annotation')->findOneBy($search_array);
 
         if(!$annotation){
             $annotation = new Annotation();
@@ -55,6 +66,12 @@ class AnnotationController extends Controller
 
     public function deleteAction(Request $request)
     {
+        if ($request->get('start') == null
+            || $request->get('startOffset') == null
+            || $request->get('end') == null
+            || $request->get('endOffset') == null
+            || $request->get('url') == null)
+            return;
         $a = [];
         $a['url'] = $request->get('url');
         $a['start'] = $request->get('start');
@@ -71,7 +88,7 @@ class AnnotationController extends Controller
         );
 
         $em = $this->get('doctrine')->getManager('annotation');
-        $annotation = $em->getRepository('LuperiPageAnnotatorBundle:Annotation', 'annotation')->findOneBy($search_array);
+        $annotation = $em->getRepository('PageAnnotatorBundle:Annotation', 'annotation')->findOneBy($search_array);
 
         if(!$annotation){
             return new JsonResponse(array('success' => false));
@@ -86,7 +103,7 @@ class AnnotationController extends Controller
     public function deleteAllAction()
     {
         $em = $this->get('doctrine')->getManager('annotation');
-        $annotations = $em->getRepository('LuperiPageAnnotatorBundle:Annotation', 'annotation')->findAll();
+        $annotations = $em->getRepository('PageAnnotatorBundle:Annotation', 'annotation')->findAll();
         foreach($annotations as $annotation){
             $em->remove($annotation);
             $em->flush();
