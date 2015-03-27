@@ -5,10 +5,7 @@
  */
 
 function deleteAllAnnotations(){
-    $.post("/annotations/deleteAll/")
-        .done(function (data) {
-            //console.info("Page returned %o", data)
-        });
+    $.post("/annotations/deleteAll/");
     $.each($('.annotator-hl'), function () {
         $(this).replaceWith($(this).html());
     });
@@ -16,7 +13,7 @@ function deleteAllAnnotations(){
 
 function saveAnnotation (annotation){
     var ranges = annotation.ranges[0];
-    annotation.text = selectorValue;
+    //annotation.text = selectorValue;
 
     $.post( "/annotations/save/",
         {   start : ranges.start,
@@ -26,9 +23,6 @@ function saveAnnotation (annotation){
             quote : annotation.quote,
             url : "/annotations/",
             text : annotation.text
-        })
-        .done(function( data ) {
-            //console.info("Page /save/ returned %o", data)
         });
 }
 
@@ -41,9 +35,6 @@ function deleteAnnotation (annotation){
             end : ranges.end,
             endOffset : ranges.endOffset,
             url : "/annotations/"
-        })
-        .done(function( data ) {
-            //console.info("Page returned %o", data)
         });
 }
 
