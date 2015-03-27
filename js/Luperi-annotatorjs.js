@@ -11,7 +11,7 @@ function deleteAllAnnotations(){
     });
 }
 
-function saveAnnotation (annotation, opt){
+function saveAnnotation (annotation){
     var ranges = annotation.ranges[0];
 
     $.post( "/annotations/save/",
