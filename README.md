@@ -50,8 +50,8 @@ If you get memory errors, try increasing it with this code:
     php -dmemory_limit=1G composer.phar update
 ```
 
-Step 4: update DB connection parameters
----------------------------------------
+Step 4: Database connection parameters
+--------------------------------------
 
 Edit `app/config/config.yml` adding the following lines:
 
