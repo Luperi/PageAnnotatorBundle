@@ -46,3 +46,20 @@ function deleteAnnotation (annotation){
             //console.info("Page returned %o", data)
         });
 }
+
+function setAnnotatorLanguage(lang){
+    switch (lang){
+        case 'it':
+            $('.annotator-cancel').html("Annulla");
+            $('.annotator-save').html("Salva");
+            break;
+        case 'fr':
+            $('.annotator-cancel').html("Annule");
+            $('.annotator-save').html("Sauver");
+            break;
+        case 'es':
+            $('.annotator-cancel').html("Cancela");
+            $('.annotator-save').html("Salvar");
+            break;
+    }
+}
