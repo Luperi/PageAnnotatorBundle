@@ -4,7 +4,7 @@ PageAnnotatorBundle
 Installation
 ------------
 
-Step 1: download the bundle
+Step 1: Download the bundle
 ---------------------------
 
 Add this snippet of code in `composer.phar`:
@@ -17,7 +17,7 @@ Add this snippet of code in `composer.phar`:
 }
 ```
 
-Step 2: enable the bundle
+Step 2: Enable the bundle
 -------------------------
 
 Register the bundle in `app/AppKernel.php`:
@@ -36,7 +36,7 @@ public function registerBundles()
 }
 ```
 
-Step 3: composer update
+Step 3: Composer update
 -----------------------
 
 Open a console window, enter into the project directory and run the following code:
@@ -97,7 +97,7 @@ doctrine:
                         type: annotation
 ```
 
-Step 5: database creation
+Step 5: Database creation
 -------------------------
 
 Open a console window, enter into the project directory and run the following code:
@@ -106,7 +106,7 @@ Open a console window, enter into the project directory and run the following co
     php app/console doctrine:database:create --connection=annotation
 ```
 
-Step 6: database table creation
+Step 6: Database table creation
 -------------------------------
 
 Open a console window, enter into the project directory and run the following code:
