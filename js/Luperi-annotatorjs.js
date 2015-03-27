@@ -11,9 +11,23 @@ function deleteAllAnnotations(){
     });
 }
 
-function saveAnnotation (annotation){
+function saveAnnotation (annotation, opt){
     var ranges = annotation.ranges[0];
-    //annotation.text = selectorValue;
+
+    $.post( "/annotations/save/",
+        {   start : ranges.start,
+            startOffset : ranges.startOffset,
+            end : ranges.end,
+            endOffset : ranges.endOffset,
+            quote : annotation.quote,
+            url : "/annotations/",
+            text : annotation.text
+        });
+}
+
+function saveAnnotationWithComment (annotation, comment){
+    var ranges = annotation.ranges[0];
+    annotation.text = comment;
 
     $.post( "/annotations/save/",
         {   start : ranges.start,
