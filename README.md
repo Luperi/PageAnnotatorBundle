@@ -83,13 +83,7 @@ doctrine:
         default_entity_manager: default
         entity_managers:
             default:
-                connection: default
-                dql:
-                    numeric_functions:
-                        GEO_DISTANCE: Craue\GeoBundle\Doctrine\Query\Mysql\GeoDistance
-                mappings:
-                    SmartDbBundle:
-                        type: annotation
+                // ...
             annotation:
                 connection: annotation
                 mappings:
