@@ -112,6 +112,23 @@ class AnnotationController extends Controller
         return new JsonResponse(array('success' => true));
     }
 
+    public function deleteAllByUrlAction(Request $request)
+    {
+        if ($request->get('url') == null)
+            return new JsonResponse(array('success' => false));
+
+        $em = $this->get('doctrine')->getManager('annotation');
+        $annotations = $em->getRepository('PageAnnotatorBundle:Annotation', 'annotation')->findBy(
+            array('url' => $request->get('url'))
+        );
+        foreach($annotations as $annotation){
+            $em->remove($annotation);
+            $em->flush();
+        }
+
+        return new JsonResponse(array('success' => true));
+    }
+
     public function getAll()
     {
         return $this->getDoctrine()
