@@ -97,3 +97,9 @@ function annotateWithFixedValues(values){
 
     $('#annotator-field-1').parent().html(text);
 }
+
+var annotationCommentValue = null;
+
+function writeComment(selector){
+    annotationCommentValue = selector.options[selector.selectedIndex].value;
+}
