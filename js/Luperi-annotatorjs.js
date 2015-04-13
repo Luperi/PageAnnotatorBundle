@@ -11,7 +11,7 @@ function deleteAllAnnotations(){
     });
 }
 
-function saveAnnotation (annotation){
+function saveAnnotation (annotation, url){
     var ranges = annotation.ranges[0];
 
     $.post( "/annotations/save/",
@@ -20,12 +20,12 @@ function saveAnnotation (annotation){
             end : ranges.end,
             endOffset : ranges.endOffset,
             quote : annotation.quote,
-            url : "/annotations/",
+            url : url,
             text : annotation.text
         });
 }
 
-function saveAnnotationWithComment (annotation, comment){
+function saveAnnotationWithComment (annotation, url, comment){
     var ranges = annotation.ranges[0];
     annotation.text = comment;
 
@@ -35,12 +35,12 @@ function saveAnnotationWithComment (annotation, comment){
             end : ranges.end,
             endOffset : ranges.endOffset,
             quote : annotation.quote,
-            url : "/annotations/",
+            url : url,
             text : annotation.text
         });
 }
 
-function deleteAnnotation (annotation){
+function deleteAnnotation (annotation, url){
     var ranges = annotation.ranges[0];
 
     $.post( "/annotations/delete/",
@@ -48,7 +48,7 @@ function deleteAnnotation (annotation){
             startOffset : ranges.startOffset,
             end : ranges.end,
             endOffset : ranges.endOffset,
-            url : "/annotations/"
+            url : url
         });
 }
 
