@@ -103,3 +103,13 @@ var annotationCommentValue = null;
 function writeComment(selector){
     annotationCommentValue = selector.options[selector.selectedIndex].value;
 }
+
+function resetAnnotatorFixedValueSelector(){
+    $("#comment-selection option").each(function(){
+        if ($(this).attr('value') == "null") {
+            $(this).attr("selected", true);
+        } else {
+            $(this).removeAttr("selected");
+        }
+    });
+}
