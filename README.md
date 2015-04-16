@@ -115,14 +115,14 @@ Utilization
 In your html page import the libraries by adding these lines:
 
 ``` javascript
-    <script src="http://assets.annotateit.org/annotator/v1.2.7/annotator-full.min.js"></script>
-    <script type="text/javascript" src="https://cdn.rawgit.com/Luperi/PageAnnotatorBundle/master/js/Luperi-annotatorjs.js.twig"></script>
+    <script type="text/javascript" src="http://assets.annotateit.org/annotator/v1.2.10/annotator-full.min.js"></script>
+    <script type="text/javascript" src="{{ path("page_annotator_library_js") }}"></script>
 ```
 
 And the style:
 
 ``` css
-    <link rel="stylesheet" href="https://cdn.rawgit.com/Luperi/PageAnnotatorBundle/master/css/annotator.min.css">
+    <link rel="stylesheet" href="http://assets.annotateit.org/annotator/v1.2.10/annotator.min.css">
 ```
 
 Example with standard annotator
@@ -131,6 +131,10 @@ Example with standard annotator
 ``` html
 <html>    
     <head>
+        <script type="text/javascript" src="http://assets.annotateit.org/annotator/v1.2.10/annotator-full.min.js"></script>
+        <script type="text/javascript" src="{{ path("page_annotator_library_js") }}"></script>
+        <link rel="stylesheet" href="http://assets.annotateit.org/annotator/v1.2.10/annotator.min.css">
+        
         <script>
         $(function(){
             // Add the plugin that lets you save your annotations
@@ -188,6 +192,10 @@ If you want to annotate with prefixed values instead of free comments, yuo have 
 ``` html
 <html>    
     <head>
+        <script type="text/javascript" src="http://assets.annotateit.org/annotator/v1.2.10/annotator-full.min.js"></script>
+        <script type="text/javascript" src="{{ path("page_annotator_library_js") }}"></script>
+        <link rel="stylesheet" href="http://assets.annotateit.org/annotator/v1.2.10/annotator.min.css">
+        
         <script>
         $(function(){
             // Add the plugin that lets you save your annotations
