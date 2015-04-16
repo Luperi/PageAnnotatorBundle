@@ -13,7 +13,7 @@ Add this snippet of code in `composer.phar`:
 "require": {
     // ...
     
-    "luperi/page_annotator_bundle": "dev-master"
+    "luperi/page-annotator-bundle": "dev-master"
 }
 ```
 
@@ -31,7 +31,7 @@ public function registerBundles()
     $bundles = array(
         // ...
 
-        new luperi\PagenAnnotatorBundle\PageAnnotatorBundle(),
+        new Luperi\PageAnnotatorBundle\PageAnnotatorBundle(),
     );
 }
 ```
