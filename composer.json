@@ -17,8 +17,7 @@
     "symfony/finder": "2.*",
     "symfony/yaml": "2.*",
     "symfony/form": "2.*",
-    "symfony/browser-kit": "2.*",
-    "friendsofsymfony/jsrouting-bundle": "1.5"
+    "symfony/browser-kit": "2.*"
   },
   "minimum-stability": "dev",
   "target-dir": "Luperi/PageAnnotatorBundle",

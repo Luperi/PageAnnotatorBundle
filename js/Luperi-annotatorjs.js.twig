@@ -12,7 +12,7 @@ function deleteAllAnnotations(url){
 }
 
 function deleteAllAnnotationsByUrl(url){
-    $.post("/annotations/deleteAllByUrl/",
+    $.post("{{ path('page_annotator_delete_all_by_url') }}",
         {
             url : url
         });

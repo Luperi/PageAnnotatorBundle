@@ -116,7 +116,7 @@ In your html page import the libraries by adding these lines:
 
 ``` javascript
     <script src="http://assets.annotateit.org/annotator/v1.2.7/annotator-full.min.js"></script>
-    <script type="text/javascript" src="https://cdn.rawgit.com/Luperi/PageAnnotatorBundle/master/js/Luperi-annotatorjs.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/Luperi/PageAnnotatorBundle/master/js/Luperi-annotatorjs.js.twig"></script>
 ```
 
 And the style:
