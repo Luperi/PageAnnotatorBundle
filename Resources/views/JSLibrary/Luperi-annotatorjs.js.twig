@@ -4,15 +4,15 @@
  * Support at: https://www.npmjs.com/package/annotator
  */
 
-function deleteAllAnnotations(url){
-    $.post("/annotations/deleteAll/");
+function deleteAllAnnotations(){
+    $.post("{{ deleteAll }}");
     $.each($('.annotator-hl'), function () {
         $(this).replaceWith($(this).html());
     });
 }
 
 function deleteAllAnnotationsByUrl(url){
-    $.post("{{ path('page_annotator_delete_all_by_url') }}",
+    $.post("{{ deleteAllByUrl }}",
         {
             url : url
         });
@@ -24,7 +24,7 @@ function deleteAllAnnotationsByUrl(url){
 function saveAnnotation (annotation, url){
     var ranges = annotation.ranges[0];
 
-    $.post( "/annotations/save/",
+    $.post( "{{ save }}",
         {
             start : ranges.start,
             startOffset : ranges.startOffset,
@@ -40,7 +40,7 @@ function saveAnnotationWithComment (annotation, url, comment){
     var ranges = annotation.ranges[0];
     annotation.text = comment;
 
-    $.post( "/annotations/save/",
+    $.post( "{{ save }}",
         {
             start : ranges.start,
             startOffset : ranges.startOffset,
@@ -55,7 +55,7 @@ function saveAnnotationWithComment (annotation, url, comment){
 function deleteAnnotation (annotation, url){
     var ranges = annotation.ranges[0];
 
-    $.post( "/annotations/delete/",
+    $.post( "{{ delete }}",
         {
             start : ranges.start,
             startOffset : ranges.startOffset,

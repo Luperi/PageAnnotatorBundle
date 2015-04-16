@@ -162,4 +162,18 @@ class AnnotationController extends Controller
         return new Response(stripslashes(json_encode($annotation_array)));
     }
 
+    public function libraryJsAction() {
+        $params = array(
+            'deleteAll' => $this->generateUrl('page_annotator_delete_all'),
+            'deleteAllByUrl' => $this->generateUrl('page_annotator_delete_all_by_url'),
+            'save' => $this->generateUrl('page_annotator_save'),
+            'delete' => $this->generateUrl('page_annotator_delete'),
+            'delete' => $this->generateUrl('page_annotator_delete'),
+          );
+        $rendered = $this->renderView( 'PageAnnotatorBundle:JSLibrary:Luperi-annotatorjs.js.twig', $params );
+        $response = new Response( $rendered );
+        $response->headers->set( 'Content-Type', 'text/javascript' );
+        return $response;
+    }
+
 }
