@@ -136,4 +136,29 @@ class AnnotationController extends Controller
             ->findAll();
     }
 
+    public function searchAction(){
+        $annotations = AnnotationController::getAll();
+
+        $annotation_array = array('response' => 'No results found.');
+        if($annotations){
+            $annotation_data = array();
+            foreach($annotations as $annotation){
+                $range = array(
+                    'start' => $annotation->getStart(),
+                    'end' => $annotation->getEnd(),
+                    'startOffset' => $annotation->getStartOffset(),
+                    'endOffset' => $annotation->getEndOffset(),
+                );
+                $annotation_info = array(
+                    'quote' => $annotation->getQuote(),
+                    'text' => $annotation->getText(),
+                    'ranges' => array($range)
+                );
+                $annotation_data[] = $annotation_info;
+            }
+            $annotation_array = array('total' => count($annotation_data), 'rows' => $annotation_data);
+        }
+        return new Response(stripslashes(json_encode($annotation_array)));
+    }
+
 }

@@ -2,6 +2,10 @@ page_annotator_save:
     path:     /save/
     defaults: { _controller: PageAnnotatorBundle:Annotation:save }
 
+page_annotator_search:
+    path:     /search/{url}
+    defaults: { _controller: PageAnnotatorBundle:Annotation:search }
+
 page_annotator_delete:
     path:     /delete/
     defaults: { _controller: PageAnnotatorBundle:Annotation:delete }
