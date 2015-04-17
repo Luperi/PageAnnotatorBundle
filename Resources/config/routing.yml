@@ -3,8 +3,9 @@ page_annotator_save:
     defaults: { _controller: PageAnnotatorBundle:Annotation:save }
 
 page_annotator_search:
-    path:     /search/{url}
+    path:     /search/
     defaults: { _controller: PageAnnotatorBundle:Annotation:search }
+    methods: [GET]
 
 page_annotator_delete:
     path:     /delete/

@@ -1,6 +1,6 @@
 /*
  * File creato da Luca Perico
- * Include le funzioni necessarie per l'utilizzo di annotator con Symfony
+ * Include le funzioni necessarie per l'utilizzo di annotator con Symfony2
  * Support at: https://www.npmjs.com/package/annotator
  */
 
@@ -19,50 +19,6 @@ function deleteAllAnnotationsByUrl(url){
     $.each($('.annotator-hl'), function () {
         $(this).replaceWith($(this).html());
     });
-}
-
-function saveAnnotation (annotation, url){
-    var ranges = annotation.ranges[0];
-
-    $.post( "{{ save }}",
-        {
-            start : ranges.start,
-            startOffset : ranges.startOffset,
-            end : ranges.end,
-            endOffset : ranges.endOffset,
-            quote : annotation.quote,
-            url : url,
-            text : annotation.text
-        });
-}
-
-function saveAnnotationWithComment (annotation, url, comment){
-    var ranges = annotation.ranges[0];
-    annotation.text = comment;
-
-    $.post( "{{ save }}",
-        {
-            start : ranges.start,
-            startOffset : ranges.startOffset,
-            end : ranges.end,
-            endOffset : ranges.endOffset,
-            quote : annotation.quote,
-            url : url,
-            text : annotation.text
-        });
-}
-
-function deleteAnnotation (annotation, url){
-    var ranges = annotation.ranges[0];
-
-    $.post( "{{ delete }}",
-        {
-            start : ranges.start,
-            startOffset : ranges.startOffset,
-            end : ranges.end,
-            endOffset : ranges.endOffset,
-            url : url
-        });
 }
 
 function setAnnotatorLanguage(lang){
