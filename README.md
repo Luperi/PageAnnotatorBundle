@@ -128,6 +128,8 @@ And the style:
 Example with standard annotator
 -------------------------------
 
+N.B.: the two following examples use twig to resolve the routes
+
 ``` html
 <html>    
     <head>
@@ -137,41 +139,32 @@ Example with standard annotator
         
         <script>
         $(function(){
-            // Add the plugin that lets you save your annotations
-            Annotator.Plugin.SavingAnnotation = (function() {
-    
-                function SavingAnnotation(element, options) {
-                    this.element = element;
-                    this.options = options;
-                }
-    
-                SavingAnnotation.prototype.pluginInit = function() {
-                    this.annotator
-                            .subscribe("beforeAnnotationCreated", function (annotation) {
-                                console.info("The annotation: %o is going to be created!", annotation);
-                            })
-                            .subscribe("annotationCreated", function (annotation) {
-                                console.info("The annotation: %o has just been created!", annotation)
-                                saveAnnotation(annotation, "<your_url>");
-                            })
-                            .subscribe("annotationUpdated", function (annotation) {
-                                console.info("The annotation: %o has just been updated!", annotation);
-                                saveAnnotation(annotation, "<your_url>");
-                            })
-                            .subscribe("annotationDeleted", function (annotation) {
-                                console.info("The annotation: %o has just been deleted!", annotation);
-                                deleteAnnotation(annotation, "<your_url>");
-                            });
-                };
-    
-                return SavingAnnotation;
-            })();
-    
-            // Annotator init
+            // Add store plugin
             $('#container').annotator()
-                            .annotator('addPlugin', 'SavingAnnotation');
-    
-            // Set annotator language, for example italian
+                            .annotator('addPlugin', 'Store',
+                                    {
+                                        prefix: '',
+
+                                        annotationData: {
+                                            'uri': '<your_url>'
+                                        },
+
+                                        loadFromSearch:
+                                        {
+                                            'limit': 0,
+                                            'uri' : '<your_url>'
+                                        },
+
+                                        urls: {
+                                            // These are the default URLs.
+                                            create:  '{{ path("page_annotator_save") }}',
+                                            update:  '{{ path("page_annotator_save") }}',
+                                            destroy: '{{ path("page_annotator_delete") }}',
+                                            search:  '{{ path("page_annotator_search", { 'uri' : '<your_url>' }) }}'
+                                        }
+                                    });
+
+            // Set Annotator Language, for example Italian
             setAnnotatorLanguage("it");
         });
         </script>
@@ -198,7 +191,7 @@ If you want to annotate with prefixed values instead of free comments, yuo have 
         
         <script>
         $(function(){
-            // Add the plugin that lets you save your annotations
+            // Init plugins
             Annotator.Plugin.SavingAnnotation = (function() {
 
                 function SavingAnnotation(element, options) {
@@ -214,29 +207,48 @@ If you want to annotate with prefixed values instead of free comments, yuo have 
                             })
                             .subscribe("annotationCreated", function (annotation) {
                                 console.info("The annotation: %o has just been created!", annotation)
-                                saveAnnotationWithComment(annotation, "<your_url>", annotationCommentValue);
+                                annotation.text = annotationCommentValue;
                             })
                             .subscribe("annotationUpdated", function (annotation) {
                                 console.info("The annotation: %o has just been updated!", annotation);
-                                saveAnnotationWithComment(annotation, "<your_url>", annotationCommentValue);
+                                annotation.text = annotationCommentValue;
                             })
-                            .subscribe("annotationDeleted", function (annotation) {
-                                console.info("The annotation: %o has just been deleted!", annotation);
-                                deleteAnnotation(annotation, "<your_url>");
-                            });
                 };
-
                 return SavingAnnotation;
             })();
 
-            // Annotator init
+            // Add all necessary plugins
             $('#container').annotator()
                             .annotator('addPlugin', 'SavingAnnotation')
-                            .annotator('addPlugin', 'Tags');
+                            .annotator('addPlugin', 'Tags')
+                            .annotator('addPlugin', 'Store',
+                                    {
+                                        prefix: '',
 
-            // Set annotator language, for example italian
+                                        annotationData: {
+                                            'uri': '<your_url>'
+                                        },
+
+                                        loadFromSearch:
+                                        {
+                                            'limit': 0,
+                                            'uri' : '<your_url>'
+                                        },
+
+                                        urls: {
+                                            // These are the default URLs.
+                                            create:  '{{ path("page_annotator_save") }}',
+                                            update:  '{{ path("page_annotator_save") }}',
+                                            destroy: '{{ path("page_annotator_delete") }}',
+                                            search:  '{{ path("page_annotator_search", { 'uri' : '<your_url>' }) }}'
+                                        }
+                                    });
+
+
+            // Set Annotator Language, for example Italian
             setAnnotatorLanguage("it");
-            
+
+            // Set fixed values
             var values = ["Tag1", "Tag2", "Tag3"];
             annotateWithFixedValues(values);
         });
@@ -273,3 +285,30 @@ Instead, if you want to delete only the annotations about a specific url, you ca
 ``` javascript
     deleteAllAnnotationsByUrl("<your_url>");
 ```
+
+In your PHP code, yuo can manage annotations as entity object in this way:
+
+``` php
+    use Luperi\PageAnnotatorBundle\Controller\AnnotationController;
+    
+    class YourClassController extends Controller
+    {
+        public function YourAction()
+        {
+            $annotations = AnnotationController::getAll();
+    
+            return $this->render('YourBundle:YourClass:Your.html.twig', ['annotations' => $annotations]);
+        }
+    
+    }
+```
+
+See `PageAnnotatorBundle/Entity/Annotation.php` for available methods
+
+License
+-------
+
+This bundle is released under the MIT license. See the complete license in the
+bundle:
+
+    Resources/meta/LICENSE
