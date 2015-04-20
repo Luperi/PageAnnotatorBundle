@@ -108,7 +108,7 @@ class AnnotationController extends Controller
             $annotation_array = array('total' => count($annotation_data), 'rows' => $annotation_data);
         }
 
-        return new Response(stripslashes(json_encode($annotation_array)));
+        return new Response(json_encode($annotation_array));
     }
 
     public function deleteAllAction()
