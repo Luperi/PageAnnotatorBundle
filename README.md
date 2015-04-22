@@ -203,11 +203,15 @@ If you want to annotate with prefixed values instead of free comments, yuo have 
                     this.annotator
                             .subscribe("beforeAnnotationCreated", function (annotation) {
                                 console.info("The annotation: %o is going to be created!", annotation);
-                                resetAnnotatorFixedValueSelector();
+                                setAnnotatorFixedValueSelector("null");
                             })
                             .subscribe("annotationCreated", function (annotation) {
                                 console.info("The annotation: %o has just been created!", annotation)
                                 annotation.text = annotationCommentValue;
+                            })
+                            .subscribe("annotationEditorShown", function (editor, annotation) {
+                                console.info("The annotation: %o is going to be updated!", annotation);
+                                setAnnotatorFixedValueSelector(annotation.text);
                             })
                             .subscribe("annotationUpdated", function (annotation) {
                                 console.info("The annotation: %o has just been updated!", annotation);

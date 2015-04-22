@@ -60,9 +60,9 @@ function writeComment(selector){
     annotationCommentValue = selector.options[selector.selectedIndex].value;
 }
 
-function resetAnnotatorFixedValueSelector(){
+function setAnnotatorFixedValueSelector(val){
     $("#comment-selection option").each(function(){
-        if ($(this).attr('value') == "null") {
+        if ($(this).attr('value') == val) {
             $(this).attr("selected", true);
         } else {
             $(this).removeAttr("selected");
