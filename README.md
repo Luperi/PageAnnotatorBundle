@@ -7,7 +7,7 @@ Installation
 Step 1: Download the bundle
 ---------------------------
 
-Add this snippet of code in `composer.phar`:
+Add this snippet of code in `composer.json`:
 
 ```bash
 "require": {
